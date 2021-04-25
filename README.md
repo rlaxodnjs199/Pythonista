@@ -1,1 +1,1 @@
-# Journey to be a pythonista
+# Journey to be a Pythonista
