@@ -1,1 +1,1 @@
-# Journey to be a Pythonista
+# Learn Python!
