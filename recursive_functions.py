@@ -17,9 +17,19 @@ def flatten_dict(
     return dict(items)
 
 
+def _flatten_dict_gen(d, parent_key, separator):
+    for k, v in d.items():
+        new_key = parent_key + separator + k
+        if isinstance(v, MutableMapping):
+            yield from _flatten_dict_gen(v, new_key, separator)
+        else:
+            yield new_key, v
+
+def flatten_dict_gen(d: MutableMapping, parent_key: str = "", separator: str = "."):
+    return dict(_flatten_dict_gen(d, parent_key, separator))
 
 if __name__ == "__main__":
-    print(flatten_dict(INPUT))
+    print(flatten_dict_gen(INPUT))
 
 # Comments
 # MutableMapping : abstract class to determine dictionary objects
