@@ -1,5 +1,4 @@
 # Transpose matrix
-
 def transpose1(matrix):
     result = []
     for i in range(len(matrix[0])):
@@ -15,6 +14,10 @@ def transpose2(matrix):
     return result
 
 
-if __name__ == '__main__':
+def transpose3(matrix):
+    return list(map(list, zip(*matrix)))
+
+
+if __name__ == "__main__":
     matrix = [[4, 5, 3, 9], [7, 1, 8, 2], [5, 6, 4, 7]]
-    print(transpose2(matrix))
+    print(transpose3(matrix))
