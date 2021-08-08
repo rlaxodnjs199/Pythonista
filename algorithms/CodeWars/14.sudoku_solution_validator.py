@@ -20,7 +20,7 @@ def valid_solution(board):
             return False
     for sub_grid_row in range(0, len(board), 3):
         for sub_grid_col in range(0, len(board[0]), 3):
-            sub_grid = [row[sub_grid_row:sub_grid_row+3] for row in board[sub_grid_col:sub_grid_col+3]]
+            sub_grid = [row[sub_grid_col:sub_grid_col+3] for row in board[sub_grid_row:sub_grid_row+3]]
             sub_grid_flattened = list(itertools.chain(*sub_grid))
             if not check_sub_grid(sub_grid_flattened):
                 return False
