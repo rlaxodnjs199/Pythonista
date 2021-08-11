@@ -1,12 +1,13 @@
 class Node:
-	def __init__(self, val, left=None, right=None):
-		self.val = val
-		self.left = left
-		self.right = right
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 
 # def serialize(node: Node, s=""):
 # 	if not isinstance(node, Node):
-# 		return "# " 
+# 		return "# "
 # 	s += (str(node.val) + " ")
 # 	s += serialize(node.left)
 # 	s += serialize(node.right)
@@ -20,23 +21,28 @@ class Node:
 # 	result.right = deserialize(node_str.partition(" ")[2].partition(" ")[2], result)
 # 	return result
 
+
 def serialize(node: Node):
-	if not isinstance(node, Node):
-		return "#"
-	return f'{node.val} {serialize(node.left)} {serialize(node.right)}'
+    if not isinstance(node, Node):
+        return "#"
+    return f"{node.val} {serialize(node.left)} {serialize(node.right)}"
+
 
 def deserialize(node_str):
-	vals = iter(node_str.split())
-	def build_node():
-		val = next(vals)
-		if val == "#":
-			return None
-		node = Node(val)
-		node.left = build_node()
-		node.right = build_node()
-		return node
-	return build_node()
+    vals = iter(node_str.split())
+
+    def build_node():
+        val = next(vals)
+        if val == "#":
+            return None
+        node = Node(val)
+        node.left = build_node()
+        node.right = build_node()
+        return node
+
+    return build_node()
+
 
 if __name__ == "__main__":
-	node = Node('root', Node('left', Node('left.left')), Node('right'))
-	assert deserialize(serialize(node)).left.left.val == 'left.left'
+    node = Node("root", Node("left", Node("left.left")), Node("right"))
+    assert deserialize(serialize(node)).left.left.val == "left.left"

@@ -8,12 +8,14 @@
 
 from typing import List
 
-def solution(num_array: List[int]) -> List[int]:
-	mul = 1
-	for num in num_array:
-		mul *= num
-	return [int(mul/n) for n in num_array]
 
-if __name__ == '__main__':
-	num_array = [1,2,3,4,5]
-	print(solution(num_array))
+def solution(num_array: List[int]) -> List[int]:
+    mul = 1
+    for num in num_array:
+        mul *= num
+    return [int(mul / n) for n in num_array]
+
+
+if __name__ == "__main__":
+    num_array = [1, 2, 3, 4, 5]
+    print(solution(num_array))

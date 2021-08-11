@@ -19,12 +19,14 @@ from typing import List
 #         if i != 0 and not result:
 #             return i
 
+
 def missing_positive1(num_array: List[int]) -> int:
     num_set = set(num_array)
     result = 1
     while result in num_set:
         result += 1
     return result
+
 
 def missing_positive2(num_array: List[int]) -> int:
     if not num_array:
@@ -42,8 +44,8 @@ def missing_positive2(num_array: List[int]) -> int:
     return l + 1
 
 
-if __name__ == '__main__':
-    num_array = [5,6,7,8,8,9,8,10,3, 4, -1, 1, 2]
+if __name__ == "__main__":
+    num_array = [5, 6, 7, 8, 8, 9, 8, 10, 3, 4, -1, 1, 2]
     print(missing_positive2(num_array))
 
 # This is a good problem to use set because we need some kind of 'key' and we don't need to store value associated with it.
