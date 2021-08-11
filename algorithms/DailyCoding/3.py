@@ -25,17 +25,27 @@ def serialize(node: Node):
 		return "#"
 	return f'{node.val} {serialize(node.left)} {serialize(node.right)}'
 
+# def deserialize(node_str):
+# 	vals = iter(node_str.split())
+# 	def build_node():
+# 		val = next(vals)
+# 		if val == "#":
+# 			return None
+# 		node = Node(val)
+# 		node.left = build_node()
+# 		node.right = build_node()
+# 		return node
+# 	return build_node()
+
 def deserialize(node_str):
 	vals = iter(node_str.split())
 	def build_node():
 		val = next(vals)
 		if val == "#":
 			return None
-		node = Node(val)
-		node.left = build_node()
-		node.right = build_node()
-		return node
+		return Node(val, build_node(), build_node())
 	return build_node()
+
 
 if __name__ == "__main__":
 	node = Node('root', Node('left', Node('left.left')), Node('right'))
