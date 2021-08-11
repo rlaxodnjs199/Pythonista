@@ -46,6 +46,6 @@ def missing_positive2(num_array: List[int]) -> int:
 
 if __name__ == "__main__":
     num_array = [5, 6, 7, 8, 8, 9, 8, 10, 3, 4, -1, 1, 2]
-    print(missing_positive2(num_array))
+    assert missing_positive2(num_array) == 11
 
 # This is a good problem to use set because we need some kind of 'key' and we don't need to store value associated with it.
