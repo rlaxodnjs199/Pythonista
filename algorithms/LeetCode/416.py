@@ -12,3 +12,21 @@ def canPartition(self, nums: List[int]) -> bool:
 		if dp[target]:
 			return True
 	return False
+
+def canPartition2(self, nums: List[int]) -> bool:
+	s = sum(nums)
+	if s & 1: return False
+	
+	def helper(self, nums, target, ind, n, d):
+		if target in d: return d[target]
+		if target == 0: d[target] = True
+		else:
+			d[target] = False
+			if target > 0:
+				for i in range(ind, n):
+					if helper(nums, target - nums[i], i+1, n, d):
+						d[target] = True
+						break
+		return d[target]
+	
+	return helper(nums, s >> 1, 0, len(nums), {})
