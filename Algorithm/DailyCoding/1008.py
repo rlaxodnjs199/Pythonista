@@ -6,8 +6,8 @@ def solution(narray: List[int]) -> int:
 	max_xor = 0
 	for idx1, n1 in enumerate(narray):
 		for n2 in narray[idx1+1:]:
-			if n1 ^ n2 > max_xor:
-				max_xor = n1 ^ n2
+			if (n1 << n2) > max_xor:
+				max_xor = n1 << n2
 	return max_xor 
 
 if __name__ == '__main__':
