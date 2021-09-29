@@ -2,17 +2,57 @@
 # Given an array of integers, find the maximum XOR of any two elements.
 from typing import List
 
-def solution(narray: List[int]) -> int:
-	max_xor = 0
-	for idx1, n1 in enumerate(narray):
-		for n2 in narray[idx1+1:]:
-			if (n1 << n2) > max_xor:
-				max_xor = n1 << n2
-	return max_xor 
 
-if __name__ == '__main__':
-	narray = [1,2,3]
-	print(solution(narray))
+class TrieNode:
+    def __init__(self) -> None:
+        self.children = {}
+
+
+class Trie:
+    def __init__(self, size: int) -> None:
+        self.root = TrieNode()
+        self.size = size
+
+    def insert(self, n: int) -> None:
+        p = self.root
+
+        for i in range(self.size, -1, -1):
+            bit = bool(n & (1 << i))
+            if bit not in p.children:
+                p.children[bit] = TrieNode()
+            p = p.children[bit]
+
+    def find_max_xor(self, n: int):
+        p = self.root
+        max_xor = 0
+        for i in range(self.size, -1, -1):
+            bit = bool(n & (1 << i))
+            if (1 - bit) in p.children:
+                max_xor |= 1 << i
+                p = p.children[not bit]
+            else:
+                p = p.children[bit]
+
+        return max_xor
+
+
+def solution(narray: List[int]) -> int:
+    size = max(narray).bit_length()
+    trie = Trie(size)
+
+    for n in narray:
+        trie.insert(n)
+
+    max_xor = 0
+    for n in narray:
+        max_xor = max(max_xor, trie.find_max_xor(n))
+
+    return max_xor
+
+
+if __name__ == "__main__":
+    print(solution([4, 6, 7, 2]))
+
 
 # Today I learned:
 # How to iterate multiple for-loop with different start index?
@@ -24,3 +64,7 @@ if __name__ == '__main__':
 # 	for idx1, n1 in enumerate(narray):
 # 		for n2 in narray[idx1+1:]:
 # 			print(n1, n2)
+#
+# Bit operation '~' doesn't work as I expected"
+# 	The most significant bit is a sign bit, so flipping the entire bit
+#	throws different result compare to (1 - bit)
