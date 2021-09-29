@@ -68,3 +68,5 @@ if __name__ == "__main__":
 # Bit operation '~' doesn't work as I expected"
 # 	The most significant bit is a sign bit, so flipping the entire bit
 #	throws different result compare to (1 - bit)
+# Insert to Trie structure: O(k * N) where k is a max bit length and N is a number of elements in the array.
+# Find maximum xor: O(k * N) as well since the depth of the tree is k.
