@@ -1,5 +1,5 @@
 # Things learned:
-# ord() -> integer representation of unicode character
+# ord() -> cast char to unicode int
 # TrieNode has two variables: Array[A to Z], is_end_of_word identifier
 
 
@@ -11,9 +11,9 @@ class TrieNode:
 
 class Trie:
     def __init__(self):
-        self.root = self.getNode()
+        self.root = self._get_node()
 
-    def getNode(self) -> TrieNode:
+    def _get_node(self) -> TrieNode:
         return TrieNode()
 
     def _char_to_index(self, c: str) -> int:
@@ -25,11 +25,11 @@ class Trie:
         for c in key:
             index = self._char_to_index(c)
             if not pointer.children[index]:
-                pointer.children[index] = self.getNode()
+                pointer.children[index] = self._get_node()
             pointer = pointer.children[index]
         pointer.is_end_of_word = True
 
-    def search(self, key: str):
+    def search(self, key: str) -> bool:
         pointer = self.root
 
         for c in key:
