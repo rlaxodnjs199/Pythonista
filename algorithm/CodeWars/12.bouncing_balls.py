@@ -22,6 +22,7 @@
 
 # (Condition 2) not fulfilled).
 
+
 def bouncingBall(h, bounce, window):
     if h <= 0 or bounce <= 0 or bounce >= 1 or window >= h:
         return -1

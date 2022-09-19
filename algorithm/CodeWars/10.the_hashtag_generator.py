@@ -13,8 +13,9 @@
 # "    Hello     World   "                  =>  "#HelloWorld"
 # ""                                        =>  false
 
+
 def generate_hashtag(s):
     if len(s) == 0:
         return False
-    result = '#' + ''.join(word.capitalize() for word in s.split())
+    result = "#" + "".join(word.capitalize() for word in s.split())
     return result if len(result) < 140 else False

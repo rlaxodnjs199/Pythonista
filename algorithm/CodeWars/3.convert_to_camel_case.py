@@ -10,10 +10,10 @@ import re
 
 
 def to_camel_case_1(text):
-    word_list = re.split('-|_', text)
+    word_list = re.split("-|_", text)
     word1 = word_list[0]
-    return word1 + ''.join(word.capitalize() for word in word_list[1:])
+    return word1 + "".join(word.capitalize() for word in word_list[1:])
 
 
 def to_camel_case_2(text):
-    return re.sub('[-_](.)', lambda word: word.group(1).upper(), text)
+    return re.sub("[-_](.)", lambda word: word.group(1).upper(), text)

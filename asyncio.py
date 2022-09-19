@@ -32,8 +32,10 @@ async def chain(n: int) -> None:
 async def main(*args):
     await asyncio.gather(*(chain(n) for n in args))
 
+
 if __name__ == "__main__":
     import sys
+
     random.seed(444)
     args = [1, 2, 3] if len(sys.argv) == 1 else map(int, sys.argv[1:])
     start = time.perf_counter()

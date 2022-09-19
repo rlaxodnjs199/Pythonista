@@ -6,16 +6,17 @@
 # iq_test("2 4 7 8 10") => 3 # Third number is odd, while the rest of the numbers are even
 # iq_test("1 2 1 1") => 2 # Second number is even, while the rest of the numbers are odd
 
+
 def iq_test1(numbers):
     last_even_index = 0
     last_odd_index = 0
     even_count = 0
     odd_count = 0
-    numbers = numbers.split(' ')
+    numbers = numbers.split(" ")
     for i in range(len(numbers)):
         if numbers[i] % 2 == 1:
             odd_count += 1
-            last_odd_index = i+1
+            last_odd_index = i + 1
             if even_count != 0 and even_count > odd_count:
                 return last_even_index
         else:
@@ -27,8 +28,13 @@ def iq_test1(numbers):
 
 
 def iq_test2(numbers):
-    even_odd_list = [int(n) % 2 == 0 for n in numbers.split(' ')]
-    return even_odd_list.index(True)+1 if even_odd_list.count(True) == 1 else even_odd_list.index(False)
+    even_odd_list = [int(n) % 2 == 0 for n in numbers.split(" ")]
+    return (
+        even_odd_list.index(True) + 1
+        if even_odd_list.count(True) == 1
+        else even_odd_list.index(False)
+    )
+
 
 # Comment
 # Make bool list of even & odd then return result with list.index & list.count.

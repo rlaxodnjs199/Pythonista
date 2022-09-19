@@ -8,8 +8,10 @@
 # The board is always 9 cells by 9 cells, and every cell only contains integers from 0 to 9.
 import itertools
 
+
 def check_sub_grid(sub_grid):
     return len(sub_grid) == 9 and sum(set(sub_grid)) == 45
+
 
 def valid_solution(board):
     for row in board:
@@ -20,14 +22,17 @@ def valid_solution(board):
             return False
     for sub_grid_row in range(0, len(board), 3):
         for sub_grid_col in range(0, len(board[0]), 3):
-            sub_grid = [row[sub_grid_col:sub_grid_col+3] for row in board[sub_grid_row:sub_grid_row+3]]
+            sub_grid = [
+                row[sub_grid_col : sub_grid_col + 3]
+                for row in board[sub_grid_row : sub_grid_row + 3]
+            ]
             sub_grid_flattened = list(itertools.chain(*sub_grid))
             if not check_sub_grid(sub_grid_flattened):
                 return False
     return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     board = [
         [5, 3, 4, 6, 7, 8, 9, 1, 2],
         [6, 7, 2, 1, 9, 5, 3, 4, 8],
@@ -37,7 +42,7 @@ if __name__ == '__main__':
         [7, 1, 3, 9, 2, 4, 8, 5, 6],
         [9, 6, 1, 5, 3, 7, 2, 8, 4],
         [2, 8, 7, 4, 1, 9, 6, 3, 5],
-        [3, 4, 5, 2, 8, 6, 1, 7, 9]
+        [3, 4, 5, 2, 8, 6, 1, 7, 9],
     ]
 
     print(valid_solution(board))

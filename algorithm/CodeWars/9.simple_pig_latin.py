@@ -10,10 +10,10 @@ import string
 
 def pig_it(text):
     words = text.split()
-    result = ''
+    result = ""
     for word in words:
         if word not in string.punctuation:
-            result += (word[1:] + word[0] + 'ay ')
+            result += word[1:] + word[0] + "ay "
         else:
-            result += (word + ' ')
+            result += word + " "
     return result[:-1]

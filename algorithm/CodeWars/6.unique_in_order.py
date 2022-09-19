@@ -6,6 +6,7 @@
 # unique_in_order('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
 # unique_in_order([1,2,2,3,3])       == [1,2,3]
 
+
 def unique_in_order1(iterable):
     if len(iterable) == 0:
         return []
@@ -15,7 +16,7 @@ def unique_in_order1(iterable):
     for index, item in enumerate(iterable):
         if index == 0:
             continue
-        if item != iterable[index-1]:
+        if item != iterable[index - 1]:
             result.append(item)
     return result
 
@@ -27,6 +28,7 @@ def unique_in_order2(iterable):
         if item != prev:
             result.append(item)
     return result
+
 
 # Comment
 # 1. It is wise to store information in 'prev' variable and update it other than reading item from iterable[index-1].
